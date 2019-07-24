@@ -11,7 +11,8 @@ export const selectCartHidden = createSelector(
     cart => cart.hidden
 );
 
-export const selectCartItems = createSelector([selectCart], 
+export const selectCartItems = createSelector(
+    [selectCart], 
     (cart) => cart.cartItems);
 // arg 1: array of input selectors
 
