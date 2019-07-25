@@ -1,9 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument/* , addCollectionAndDocuments */ } from './firebase/firebase.utils';
 import './App.css';
 
 import Header from './components/Header/Header';
@@ -14,17 +13,13 @@ import CheckoutPage from './pages/Checkout/Checkout';
 
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
-
-const Text = styled.div`
-	color: red;
-	font-size: 28px;
-`;
+// import { selectCollectionsForPreview } from './redux/shop/shop.selectors';
 
 class App extends React.Component {
 	unSubscribeFromAuth = null;
 
 	componentDidMount() {
-		const { setCurrentUser } = this.props;
+		const { setCurrentUser/* , collectionsArray */ } = this.props;
 		this.unSubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
 			// this.setState({ currentUser: user });
 			if (userAuth) {
@@ -36,9 +31,8 @@ class App extends React.Component {
 					});
 				});
 			}
-			else {
-				setCurrentUser(userAuth);
-			}
+			setCurrentUser(userAuth);
+			// addCollectionAndDocuments('collections', collectionsArray);
 		});
 	}
 
@@ -63,6 +57,7 @@ class App extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser,
+	// collectionsArray: selectCollectionsForPreview
 });
 
 const mapDispatchToProps = (dispatch) => ({
