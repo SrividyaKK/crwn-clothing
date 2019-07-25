@@ -14,6 +14,8 @@ const config = {
 // Initialize Firebase
 firebase.initializeApp(config);
 
+console.log('API KEY: ', process.env.REACT_APP_FIREBASE_API_KEY);
+
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!userAuth) return;
     const userRef = firestore.doc(`users/${userAuth.uid}`);
