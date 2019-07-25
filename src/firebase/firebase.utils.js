@@ -14,8 +14,6 @@ const config = {
 // Initialize Firebase
 firebase.initializeApp(config);
 
-console.log('API KEY: ', process.env.REACT_APP_FIREBASE_API_KEY);
-
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!userAuth) return;
     const userRef = firestore.doc(`users/${userAuth.uid}`);
@@ -44,7 +42,7 @@ export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithGoogle = () => auth.signInWithRedirect(provider);
 
 export default firebase;
 
