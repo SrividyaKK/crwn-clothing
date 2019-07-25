@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -13,6 +14,11 @@ import CheckoutPage from './pages/Checkout/Checkout';
 
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
+
+const Text = styled.div`
+	color: red;
+	font-size: 28px;
+`;
 
 class App extends React.Component {
 	unSubscribeFromAuth = null;
