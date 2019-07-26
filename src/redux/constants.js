@@ -10,3 +10,4 @@ export const REMOVE_ITEM = 'REMOVE_ITEM';
 // directory
 
 //shop
+export const UPDATE_COLLECTIONS = 'UPDATE_COLLECTIONS';
