@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { createStructuredSelector } from 'reselect';
 
 import CollectionsOverviewContainer from '../../components/CollectionsOverview/CollectionsOverview.Container';
 import CollectionPageContainer from '../Collection/Collection.Container';
