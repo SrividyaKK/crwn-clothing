@@ -5,13 +5,14 @@ import { Route } from 'react-router-dom';
 import CollectionsOverviewContainer from '../../components/CollectionsOverview/CollectionsOverview.Container';
 import CollectionPageContainer from '../Collection/Collection.Container';
 import './Shop.scss';
-import { fetchCollectionsStartAsync } from '../../redux/shop/shop.actions';
+// import { fetchCollectionsStartAsync } from '../../redux/shop/shop.actions';
+import { fetchCollectionsStart } from '../../redux/shop/shop.sagas';
 
-const ShopPage = ({ match, fetchCollectionsStartAsync, isCollectionsLoaded }) => {
+const ShopPage = ({ match, fetchCollectionsStart, isCollectionsLoaded }) => {
     // const unsubscribeFromSnapshot = null;
     useEffect(() => {
-        fetchCollectionsStartAsync();
-    }, [fetchCollectionsStartAsync]);
+        fetchCollectionsStart();
+    }, [fetchCollectionsStart]);
     return (
         <div className='shop-page'>
             <Route exact path={`${match.path}`} component={CollectionsOverviewContainer} />
@@ -21,7 +22,7 @@ const ShopPage = ({ match, fetchCollectionsStartAsync, isCollectionsLoaded }) =>
 }
 
 const mapDispatchToProps = dispatch => ({
-    fetchCollectionsStartAsync: () => dispatch(fetchCollectionsStartAsync())
+    fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
 });
 
 export default connect(null, mapDispatchToProps)(ShopPage);
