@@ -15,9 +15,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middlewares)));
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middlewares)));
 
 sagaMiddleware.run(fetchCollectionsStart);
 
 export const persistor = persistStore(store);
-export default { store, persistStore };
+export default store;

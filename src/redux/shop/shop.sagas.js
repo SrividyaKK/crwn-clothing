@@ -22,6 +22,6 @@ export function* fetchCollectionsAsync() {
     // }).catch(error => dispatch(fetchCollectionsFailure(error.message)));
 }
 
-export function* fetchCollectionStart() {
+export function* fetchCollectionsStart() {
     yield takeEvery(FETCH_COLLECTIONS_START, fetchCollectionsAsync);
 }
