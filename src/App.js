@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { auth, createUserProfileDocument/* , addCollectionAndDocuments */ } from './firebase/firebase.utils';
+// import { /* auth, createUserProfileDocument, addCollectionAndDocuments */ } from './firebase/firebase.utils';
 import './App.css';
 
 import Header from './components/Header/Header';
@@ -19,24 +19,24 @@ const App = (props) => {
 	const { setCurrentUser/* , collectionsArray */ } = props;
 
 	useEffect(() => {
-		let unSubscribeFromAuth = null;
-		unSubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-			// this.setState({ currentUser: user });
-			if (userAuth) {
-				const userRef = await createUserProfileDocument(userAuth);
-				userRef.onSnapshot(snapshot => {
-					setCurrentUser({
-						id: snapshot.id,
-						...snapshot.data()
-					});
-				});
-			}
-			setCurrentUser(userAuth);
-			// addCollectionAndDocuments('collections', collectionsArray.map(({ title, items }) => ({ title, items }) ));
-		});
-		return () => {
-			unSubscribeFromAuth();
-		};
+		// let unSubscribeFromAuth = null;
+		// unSubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+		// 	// this.setState({ currentUser: user });
+		// 	if (userAuth) {
+		// 		const userRef = await createUserProfileDocument(userAuth);
+		// 		userRef.onSnapshot(snapshot => {
+		// 			setCurrentUser({
+		// 				id: snapshot.id,
+		// 				...snapshot.data()
+		// 			});
+		// 		});
+		// 	}
+		// 	setCurrentUser(userAuth);
+		// 	// addCollectionAndDocuments('collections', collectionsArray.map(({ title, items }) => ({ title, items }) ));
+		// });
+		// return () => {
+		// 	unSubscribeFromAuth();
+		// };
 	}, [setCurrentUser]);
 
 	return (
